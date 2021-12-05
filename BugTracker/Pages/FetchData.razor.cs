@@ -1,4 +1,5 @@
 ﻿using BugTracker.Data;
+using BugTracker.Data.Entities;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Threading.Tasks;

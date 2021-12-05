@@ -1,6 +1,6 @@
 using System;
 
-namespace BugTracker.Data
+namespace BugTracker.Data.Entities
 {
     public class WeatherForecast
     {
