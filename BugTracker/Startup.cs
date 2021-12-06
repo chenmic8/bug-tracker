@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Blazored.Modal;
 
 namespace BugTracker
 {
@@ -31,6 +32,7 @@ namespace BugTracker
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
             services.AddScoped<BugService>();
+            services.AddBlazoredModal();
 
             services.AddDbContext<AppDBContext>(item => item.UseSqlServer(Configuration.GetConnectionString("Conn")));
         }

@@ -17,6 +17,18 @@ namespace BugTracker.Pages
         {
             forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
         }
+
+        [Parameter]
+        public EventCallback<bool> OnClose { get; set; }
+        private Task ModalCancel()
+        {
+            return OnClose.InvokeAsync(false);
+        }
+
+        private Task ModalOk()
+        {
+            return OnClose.InvokeAsync(true);
+        }
     }
 }
 
