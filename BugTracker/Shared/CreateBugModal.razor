@@ -1,0 +1,35 @@
+﻿<h3>Enter Information for New Bug</h3>
+
+<!-- Inputs for Bug title, description, and hours remaining-->
+<div class="simple-form">
+
+    <div class="form-group">
+        <!-- Ask for input of Bug Title and stores in BugTitle -->
+        <div class="form-group">
+            <label for="bug-title">Bug Title</label>
+            <input @bind="BugTitle" type="text" class="form-control" id="bug-title" placeholder="Enter Bug Title" />
+        </div>
+
+        <!-- Ask for input of Bug Description and stores in BugDescription -->
+        <div class="form-group">
+            <label for="bug-description">Bug Description</label>
+            <input @bind="BugDescription" type="text" class="form-control" id="bug-description" placeholder="Enter Bug Description" />
+        </div>
+
+        <!-- Ask for input of Hours Left and stores in BugHoursLeft -->
+        <div class="form-group">
+            <label for="hours-left">Hours Left</label>
+            <input @bind="BugHoursLeft" type="text" class="form-control" id="hours-left" placeholder="Enter Hours Left" />
+        </div>
+        
+        <!-- Button to submit and cancel the form -->
+        <button @onclick="SubmitForm" class="btn btn-primary">Submit</button>
+        <button @onclick="Cancel" class="btn btn-secondary">Cancel</button>
+    </div>
+</div>
+
+
+@code {
+    
+
+}

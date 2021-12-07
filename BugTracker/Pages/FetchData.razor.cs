@@ -15,6 +15,7 @@ namespace BugTracker.Pages
 
         protected override async Task OnInitializedAsync()
         {
+            //given today's date, return 5 weather forcasts in a list
             forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
         }
 
