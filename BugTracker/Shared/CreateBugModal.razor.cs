@@ -1,12 +1,16 @@
 ﻿using Blazored.Modal;
 using Blazored.Modal.Services;
+using BugTracker.Data;
 using BugTracker.Data.Entities;
 using Microsoft.AspNetCore.Components;
+using System.Threading.Tasks;
 
 namespace BugTracker.Shared
 {
     public partial class CreateBugModal
     {
+        [Inject]
+        BugService BService { get; set; }
         [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; }
 
         bool ShowForm { get; set; } = true;
@@ -15,14 +19,10 @@ namespace BugTracker.Shared
         int BugHoursRemaining { get; set; }
         int FormId { get; set; }
 
-        void SubmitForm()
+        async Task SubmitForm()
         {
-            ModalInstance.CloseAsync(ModalResult.Ok($"Form was submitted successfully."));
             
-            //Assign Bug parameters to some variables
-            var Title = BugTitle;
-            var Description = BugDescription;
-            var HoursLeft = BugHoursRemaining;
+            await ModalInstance.CloseAsync(ModalResult.Ok($"Form was submitted successfully."));
 
             //Create new Bug object
             Bug newbug = new Bug()
@@ -32,6 +32,7 @@ namespace BugTracker.Shared
                 HoursRemaining = BugHoursRemaining,
                 DateCreated = System.DateTime.Today
             };
+            bool success = await BService.CreateBugAsync(newbug);
         }
 
         void Cancel()
