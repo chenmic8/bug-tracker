@@ -13,26 +13,30 @@ namespace BugTracker.Shared
         BugService BService { get; set; }
         [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; }
 
+        //Brings inputs from HTML to C#
         string BugTitle { get; set; }
         string BugDescription { get; set; }
         int BugHoursRemaining { get; set; }
 
+        //Submitting the modal form will create a new bug object and add it to the database
         async Task SubmitForm()
         {
-            
-            await ModalInstance.CloseAsync(ModalResult.Ok($"Form was submitted successfully."));
-
             //Create new Bug object
             Bug newbug = new Bug()
             {
                 Title = BugTitle,
                 Description = BugDescription,
                 HoursRemaining = BugHoursRemaining,
-                DateCreated = System.DateTime.Today
+                DateCreated = System.DateTime.Now
             };
+            //Adds Bug Object to datagase
             bool success = await BService.CreateBugAsync(newbug);
+
+            //Exits out of the modal
+            await ModalInstance.CloseAsync(ModalResult.Ok($"Form was submitted successfully."));
         }
 
+        //Pressing the cancel button will call Cancel(), exiting out of the modal
         void Cancel()
         {
             ModalInstance.CancelAsync();

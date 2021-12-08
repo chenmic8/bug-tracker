@@ -1,4 +1,5 @@
 ﻿using BugTracker.Data.Entities;
+using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -7,6 +8,11 @@ namespace BugTracker.Data
 {
     public class BugService
     {
+        List<Bug> BugList = new List<Bug>
+        {
+
+        };
+
         //property
         private readonly AppDBContext _dbContext;
 

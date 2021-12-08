@@ -1,22 +1,27 @@
-﻿using BugTracker.Data;
+﻿using Blazored.Modal;
+using Blazored.Modal.Services;
+using BugTracker.Data;
 using BugTracker.Data.Entities;
+using BugTracker.Shared;
 using Microsoft.AspNetCore.Components;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace BugTracker.Pages
 {
     public partial class Backlog
     {
+        [CascadingParameter] public IModalService Modal { get; set; }
         [Inject]
-        WeatherForecastService ForecastService { get; set; }
+        BugService BService { get; set; }
 
-        private WeatherForecast[] forecasts;
+        private List<Bug> bugs;
 
         protected override async Task OnInitializedAsync()
         {
-            //given today's date, return 5 weather forcasts in a list
-            forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+            //pull list of bugs from database
+            bugs = await BService.GetAllBugsAsync();
         }
 
         [Parameter]
@@ -26,9 +31,14 @@ namespace BugTracker.Pages
             return OnClose.InvokeAsync(false);
         }
 
-        private Task ModalOk()
+        private async Task ShowModal()
         {
-            return OnClose.InvokeAsync(true);
+            var addBugModal = modal.Show<CreateBugModal>("Add New Bug");
+            var result = await addBugModal.Result;
+            if (!result.Cancelled)
+            {
+                bugs = await BService.GetAllBugsAsync();
+            }
         }
     }
 }
