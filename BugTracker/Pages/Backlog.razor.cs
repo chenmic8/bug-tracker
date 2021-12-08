@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BugTracker.Pages
 {
-    public partial class FetchData
+    public partial class Backlog
     {
         [Inject]
         WeatherForecastService ForecastService { get; set; }

@@ -13,11 +13,9 @@ namespace BugTracker.Shared
         BugService BService { get; set; }
         [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; }
 
-        bool ShowForm { get; set; } = true;
         string BugTitle { get; set; }
         string BugDescription { get; set; }
         int BugHoursRemaining { get; set; }
-        int FormId { get; set; }
 
         async Task SubmitForm()
         {
