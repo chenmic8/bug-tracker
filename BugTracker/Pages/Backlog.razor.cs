@@ -40,6 +40,10 @@ namespace BugTracker.Pages
                 bugs = await BService.GetAllBugsAsync();
             }
         }
+        private void Here()
+        {
+            Console.WriteLine("Here");
+        }
     }
 }
 

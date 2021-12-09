@@ -30,7 +30,7 @@ else
         <tbody>
             @foreach (var bug in bugs)
             {
-                <tr>
+                <tr @onclick="@(()=>modal.Show<EditBugModal>("Edit Bug"))">
                     <td>@bug.Id</td>
                     <td>@bug.Title</td>
                     <td>@bug.Description</td>
