@@ -1,25 +1,29 @@
-﻿<h3>Edit Bug</h3>
-
-<!--Input edited bug title-->
-<label for="edit-bug-title">Edit Bug Title</label>
-<input type="text" class="form-control-lg" id="edit-bug-title" placeholder="PLACEHOLDER"/>
+﻿<!--Input edited bug title-->
+<div>
+    <h3>Bug Title:</h3>
+    <input type="text" class="form-control-lg" id="edit-bug-title" placeholder="@bug.Title"/>
+</div>
 
 <!--Not changeable: BugId, BugDateCreated-->
-<lable>Bug ID</lable>
-<p>PLACEHOLDER FOR UNIQUE BUG ID</p>
-<label>Date Created</label>
-<p>PLACEHOLDER FOR UNIQUE BUG DATE CREATED</p>
+<div class="div1">
+    <p>Bug ID: @bug.Id</p>
+    <p>Date Created: @bug.DateCreated</p>
+</div>
 
 <!--Input edited bug hours remaining-->
-<label for="edit-hours-remaining">Hours Remaining</label>
-<input type="text" class="form-control-sm" id="edit-hours-remaining" placeholder="PLACEHOLDER FOR UNIQUE HOURS REMAINING" />
-
-<!--Update Button-->
-<button>Update</button>
+<div>
+    <label for="edit-hours-remaining">Hours Remaining</label>
+    <input type="text" class="form-control-sm" id="edit-hours-remaining" placeholder="@bug.HoursRemaining" />
+</div>
 
 <!--Input edited bug description-->
-<label for="edit-bug-description">Bug Description</label>
-<textarea type="text" class="form-control" id="edit-bug-description" rows="10" placeholder="PLACEHOLDER FOR UNIQUE BUG DESCRIPTION"/>
+<div>
+    <label for="edit-bug-description">Bug Description</label>
+    <textarea type="text" class="form-control" id="edit-bug-description" rows="10" placeholder="@bug.Description"/>
+</div>
+
+<!--Update Button-->
+<button class="btn btn-info">Update</button>
 
 @code {
 

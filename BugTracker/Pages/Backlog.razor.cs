@@ -40,11 +40,12 @@ namespace BugTracker.Pages
                 bugs = await BService.GetAllBugsAsync();
             }
         }
-        void ShowEditBug(int bugId)
+        void ShowEditBug(Bug bug)
         {
             var parameters = new ModalParameters();
-            parameters.Add(nameof(EditBugModal.BugId), bugId);
+            parameters.Add(nameof(EditBugModal.bug), bug);
 
+            var options = new ModalOptions() { Class = "my-custom-class" };
             Modal.Show<EditBugModal>("Edit Bug", parameters);
         }
     }

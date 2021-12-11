@@ -7,11 +7,11 @@ namespace BugTracker.Shared
     public partial class EditBugModal
     {
         [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; }
-        [Parameter] public int BugId { get; set; }
-        Bug bug { get; set; }
+        [Parameter] public Bug bug { get; set; }
+        Bug Bug { get; set; }
         protected override void OnInitialized()
         {
-            System.Console.WriteLine(BugId);
+            System.Console.WriteLine(bug);
         }
 
     }
