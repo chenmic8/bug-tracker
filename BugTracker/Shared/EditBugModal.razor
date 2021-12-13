@@ -1,30 +1,40 @@
-﻿<!--Input edited bug title-->
-<div>
-    <h3>Bug Title:</h3>
-    <input type="text" class="form-control-lg" id="edit-bug-title" placeholder="@bug.Title"/>
+﻿@using BugTracker.Data.Entities
+<!--Input edited bug title-->
+<div class="container">
+    <div class="row">
+        <div class="col-10">
+            <h5>Title</h5>
+            <input @bind="BugTitle" type="text" size="60" class="form-control-lg" id="edit-bug-title" placeholder="@bug.Title" />
+        </div>
+        <!--Update Button-->
+        <div class="col-2">
+            <button @onclick="@(async () => await UpdateForm(bug))" class="btn btn-info">Update</button>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-4">
+            <p style="font-size:70%">Date Created: @bug.DateCreated</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <p style="font-size:70%">ID: @bug.Id</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <label for="edit-hours-remaining" style="font-size:70%">Hours Remaining</label>
+            <input @bind="BugHoursRemaining" type="text" size="6" class="form-control-sm" id="edit-hours-remaining" placeholder="@bug.HoursRemaining" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <textarea @bind="BugDescription" type="text" class="form-control" id="edit-bug-description" rows="10" placeholder="@bug.Description" />
+        </div>
+    </div>
 </div>
 
-<!--Not changeable: BugId, BugDateCreated-->
-<div class="div1">
-    <p>Bug ID: @bug.Id</p>
-    <p>Date Created: @bug.DateCreated</p>
-</div>
 
-<!--Input edited bug hours remaining-->
-<div>
-    <label for="edit-hours-remaining">Hours Remaining</label>
-    <input type="text" class="form-control-sm" id="edit-hours-remaining" placeholder="@bug.HoursRemaining" />
-</div>
 
-<!--Input edited bug description-->
-<div>
-    <label for="edit-bug-description">Bug Description</label>
-    <textarea type="text" class="form-control" id="edit-bug-description" rows="10" placeholder="@bug.Description"/>
-</div>
 
-<!--Update Button-->
-<button class="btn btn-info">Update</button>
-
-@code {
-
-}

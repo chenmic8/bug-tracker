@@ -45,8 +45,11 @@ namespace BugTracker.Pages
             var parameters = new ModalParameters();
             parameters.Add(nameof(EditBugModal.bug), bug);
 
-            var options = new ModalOptions() { Class = "my-custom-class" };
-            Modal.Show<EditBugModal>("Edit Bug", parameters);
+            var options = new ModalOptions()
+            {
+                Class = "blazored-modal edit-modal"
+            };
+            Modal.Show<EditBugModal>("Edit Bug", parameters, options);
         }
     }
 }

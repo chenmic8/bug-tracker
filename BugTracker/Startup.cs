@@ -34,7 +34,9 @@ namespace BugTracker
             services.AddScoped<BugService>();
             services.AddBlazoredModal();
 
-            services.AddDbContext<AppDBContext>(item => item.UseSqlServer(Configuration.GetConnectionString("Conn")));
+            services.AddDbContext<AppDBContext>(item => item
+                .UseSqlServer(Configuration.GetConnectionString("Conn"))
+                .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking), ServiceLifetime.Singleton);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
