@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BugTracker.Data.Entities
 {
+    //Creating a bug class that will define parameters of a bug
     public class Bug
     {
         [Key]

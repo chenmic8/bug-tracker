@@ -40,7 +40,7 @@ namespace BugTracker.Pages
                 bugs = await BService.GetAllBugsAsync();
             }
         }
-        void ShowEditBug(Bug bug)
+        private async Task ShowEditBug(Bug bug)
         {
             var parameters = new ModalParameters();
             parameters.Add(nameof(EditBugModal.bug), bug);
@@ -49,7 +49,12 @@ namespace BugTracker.Pages
             {
                 Class = "blazored-modal edit-modal"
             };
-            Modal.Show<EditBugModal>("Edit Bug", parameters, options);
+            var editBugModal = Modal.Show<EditBugModal>("Edit Bug", parameters, options);
+            var result = await editBugModal.Result;
+            if (!result.Cancelled)
+            {
+                bugs = await BService.GetAllBugsAsync();
+            }
         }
     }
 }

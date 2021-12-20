@@ -1,4 +1,5 @@
 ﻿using Blazored.Modal;
+using Blazored.Modal.Services;
 using BugTracker.Data;
 using BugTracker.Data.Entities;
 using Microsoft.AspNetCore.Components;
@@ -22,6 +23,7 @@ namespace BugTracker.Shared
         }
         async Task UpdateForm(Bug bug)
         {
+            
             Bug renewedbug = new Bug()
             {
                 Id = bug.Id,
@@ -30,7 +32,9 @@ namespace BugTracker.Shared
                 HoursRemaining = BugHoursRemaining,
                 DateCreated = bug.DateCreated
             };
-            bool success = await BService.UpdateBugAsync(renewedbug);
+            var success = await BService.UpdateBugAsync(renewedbug);
+                
+            await ModalInstance.CloseAsync(ModalResult.Ok($"Form was submitted successfully."));
         }
     }
 }
