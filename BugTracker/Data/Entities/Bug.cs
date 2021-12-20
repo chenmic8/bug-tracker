@@ -20,6 +20,7 @@ namespace BugTracker.Data.Entities
 
         [ForeignKey ("StatusFK")]
         public int StatusId { get; set; }
+
         public Status Status { get; set; }
     }
 }

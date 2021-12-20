@@ -59,6 +59,5 @@ namespace BugTracker.Data
             await _dbContext.SaveChangesAsync();
             return true;
         }
-
     }
 }
