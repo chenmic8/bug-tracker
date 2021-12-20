@@ -4,14 +4,16 @@ using BugTracker.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BugTracker.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20211220044352_AddingStatusEntity")]
+    partial class AddingStatusEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,46 +37,30 @@ namespace BugTracker.Migrations
                     b.Property<int>("HoursRemaining")
                         .HasColumnType("int");
 
-                    b.Property<int>("StatusId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("StatusId");
 
                     b.ToTable("Bugs");
                 });
 
             modelBuilder.Entity("BugTracker.Data.Entities.Status", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("StatusId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool>("IsActive")
+                    b.Property<bool>("StatusBool")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("StatusName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("StatusId");
 
                     b.ToTable("Statuses");
-                });
-
-            modelBuilder.Entity("BugTracker.Data.Entities.Bug", b =>
-                {
-                    b.HasOne("BugTracker.Data.Entities.Status", "Status")
-                        .WithMany()
-                        .HasForeignKey("StatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Status");
                 });
 #pragma warning restore 612, 618
         }

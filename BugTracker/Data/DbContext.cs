@@ -15,5 +15,6 @@ namespace BugTracker.Data
 
         }
         public DbSet<Bug> Bugs { get; set; }
+        public DbSet<Status> Statuses { get; set; }
     }
 }

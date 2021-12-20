@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BugTracker.Data.Entities
 {
@@ -17,5 +18,8 @@ namespace BugTracker.Data.Entities
 
         public DateTime DateCreated { get; set; }
 
+        [ForeignKey ("StatusFK")]
+        public int StatusId { get; set; }
+        public Status Status { get; set; }
     }
 }

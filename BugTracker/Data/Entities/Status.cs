@@ -6,8 +6,8 @@ namespace BugTracker.Data.Entities
     public class Status
     {
         [Key]
-        public int StatusId { get; set; }
-        public string StatusName { get; set; }
-        public bool StatusBool { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public bool IsActive { get; set; }
     }
 }
